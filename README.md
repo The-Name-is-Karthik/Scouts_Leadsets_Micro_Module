@@ -4,7 +4,7 @@ This project is a micro-module for the Scout application, designed to manage lea
 
 
 ## UI Screenshot
-![UI]("UI_SLMM.png")
+![UI](UI_SLMM.png)
 
 
 ## Project Structure
