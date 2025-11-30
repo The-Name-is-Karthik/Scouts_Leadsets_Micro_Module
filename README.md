@@ -68,6 +68,8 @@ The project consists of two main parts:
 1.  Navigate to the frontend directory:
     ```bash
     cd react-frontend
+
+    cp .env.example .env
     ```
 2.  Install dependencies:
     ```bash
