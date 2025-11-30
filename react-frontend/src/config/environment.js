@@ -11,20 +11,34 @@
  * user_context and app_context - no manual setup needed!
  */
 
+// Parse the Firebase config from the JSON string if it exists
+let firebaseConfig;
+try {
+  if (process.env.REACT_APP_FIREBASE_CONFIG) {
+    firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASE_CONFIG);
+  }
+} catch (e) {
+  console.error('Error parsing REACT_APP_FIREBASE_CONFIG:', e);
+}
+
+// Fallback to individual variables if JSON config is missing or failed to parse
+if (!firebaseConfig) {
+  firebaseConfig = {
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  };
+}
+
 export const environment = {
-  firebase: {
-    apiKey: 'your-local-api-key',
-    authDomain: 'your-local-auth-domain',
-    databaseURL: 'your-local-database-url',
-    projectId: 'your-local-project-id',
-    storageBucket: 'your-local-storage-bucket',
-    messagingSenderId: 'your-local-sender-id',
-    appId: 'your-local-app-id',
-    measurementId: 'your-local-measurement-id',
-  },
+  firebase: firebaseConfig,
   // Set to undefined for local mode (no backend calls, automatic defaults)
-  // Set to 'https://atlas.dev2.app.fn7.io' for dev environment
-  // Set to 'https://api.prod.fn7.io' for production
-  apiBaseUrl: undefined, // Local mode enabled
+  // This aligns with the "No authentication" requirement in the assignment
+  apiBaseUrl: undefined,
 };
 

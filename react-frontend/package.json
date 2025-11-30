@@ -4,8 +4,10 @@
   "description": "React frontend using FN7 SDK",
   "private": true,
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "firebase": "^12.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.2",
     "react-scripts": "5.0.1"
   },
   "scripts": {
@@ -32,4 +34,3 @@
     ]
   }
 }
-
